@@ -1,12 +1,56 @@
 import Sidebar from "@/components/Sidebar";
 import { getSession } from "@/utils";
 import { homeController } from "@/controllers/home.controller";
+import { navigateTo } from "@/router/router";
+import ReservationCard from "@/components/ReservationCard";
+import { createReservation } from "@/services/reservation.service";
 
 export default function homeView() {
   const user = getSession();
+  if (!user) {
+    navigateTo("/");
+    return "";
+  }
 
   setTimeout(() => {
     homeController();
+
+    document
+      .querySelector("#manageReservationsBtn")
+      ?.addEventListener("click", (e) => {
+        e?.preventDefault?.();
+        console.log("manageReservationsBtn clicked", { user });
+        navigateTo("/reservations");
+      });
+
+    document
+      .querySelector("#newReservationBtn")
+      ?.addEventListener("click", async (e) => {
+        e?.preventDefault?.();
+        console.log("newReservationBtn clicked", { user });
+        const container = document.querySelector("#reservationsContainer");
+
+        const newRes = {
+          userId: user.id,
+          workspace: "Sala Nueva",
+          date: new Date().toISOString().slice(0, 10),
+          startHour: "09:00",
+          endHour: "10:00",
+          reason: "Reserva rápida",
+          status: "pending",
+        };
+
+        try {
+          console.log("creating reservation", newRes);
+          const created = await createReservation(newRes);
+          console.log("created reservation", created);
+          container.insertAdjacentHTML("afterbegin", ReservationCard(created));
+        } catch (err) {
+          console.error(err);
+          // Fallback: render locally if API fails
+          container.insertAdjacentHTML("afterbegin", ReservationCard(newRes));
+        }
+      });
   });
 
   return `
@@ -28,9 +72,8 @@ export default function homeView() {
 
         </div>
 
-        ${
-          user?.role === "admin"
-            ? `
+        ${user?.role === "admin"
+      ? `
               <section
                 class="bg-white p-5 rounded-lg shadow mb-6"
               >
@@ -43,6 +86,8 @@ export default function homeView() {
                 </p>
 
                 <button
+                  type="button"
+                  id="manageReservationsBtn"
                   class="mt-3 bg-blue-600 text-white px-4 py-2 rounded"
                 >
                   Gestionar Reservas
@@ -50,7 +95,7 @@ export default function homeView() {
 
               </section>
             `
-            : `
+      : `
               <section
                 class="bg-white p-5"
               >
@@ -63,6 +108,8 @@ export default function homeView() {
                 </p>
 
                 <button
+                  type="button"
+                  id="newReservationBtn"
                   class="mt-3 bg-green-600 text-white px-4 py-2 rounded"
                 >
                   Nueva Reserva
@@ -70,7 +117,7 @@ export default function homeView() {
 
               </section>
             `
-        }
+    }
 
         <section
           class="bg-white p-5 rounded-lg shadow"
@@ -86,11 +133,10 @@ export default function homeView() {
             <span
               class="text-sm text-slate-500"
             >
-              ${
-                user?.role === "admin"
-                  ? "Mostrando todas las reservas"
-                  : "Mostrando únicamente tus reservas"
-              }
+              ${user?.role === "admin"
+      ? "Mostrando todas las reservas"
+      : "Mostrando únicamente tus reservas"
+    }
             </span>
           </div>
 

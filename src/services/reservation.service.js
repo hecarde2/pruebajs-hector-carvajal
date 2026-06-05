@@ -1,7 +1,13 @@
 import { http } from "@/api/http";
 
-export const getReservation = () =>
+export const getReservations = () =>
   http.get("/reservations");
 
 export const createReservation = (data) =>
   http.post("/reservations", data);
+
+export const updateReservation = (id, data) =>
+  http.put(`/reservations/${id}`, data);
+
+export const deleteReservation = (id) =>
+  http.delete(`/reservations/${id}`);

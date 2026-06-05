@@ -1,5 +1,5 @@
 export default function ReservationCard(reservation) {
-  const { workspace, date, startHour, endHour, reason, status } = reservation;
+  const { id, workspace, date, startHour, endHour, reason, status } = reservation;
   return `
     <article
       class="rounded"
@@ -33,6 +33,11 @@ export default function ReservationCard(reservation) {
             ${status}
           </span>
         </p>
+
+        <div class="mt-3 flex gap-2">
+          <button data-id="${id}" class="edit-btn bg-yellow-400 text-black px-3 py-1 rounded">Editar</button>
+          <button data-id="${id}" class="delete-btn bg-red-500 text-white px-3 py-1 rounded">Borrar</button>
+        </div>
 
       </div>
     </article>
