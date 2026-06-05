@@ -24,116 +24,6 @@
   ],
   "reservations": [
     {
-      "id": "1",
-      "userId": 2,
-      "workspace": "Sala A",
-      "date": "2026-01-15",
-      "startHour": "08:00",
-      "endHour": "09:00",
-      "reason": "Sprint Planning",
-      "status": "pending"
-    },
-    {
-      "id": "2",
-      "userId": 3,
-      "workspace": "Sala B",
-      "date": "2026-01-15",
-      "startHour": "10:00",
-      "endHour": "11:00",
-      "reason": "Daily Meeting",
-      "status": "approved"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "Moa5rZqp91w"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "ntBuyjYPDpI"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "uZYbsB_5yYo"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "Nhsv31zpj3g"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "E2pPq5i0rJk"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "5rbtmxAbEj4"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "qFca2RB77ok"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "Bv-248DFBfY"
-    },
-    {
-      "userId": "2",
-      "workspace": "Sala Nueva",
-      "date": "2026-06-05",
-      "startHour": "09:00",
-      "endHour": "10:00",
-      "reason": "Reserva rápida",
-      "status": "pending",
-      "id": "bd6Hx3fplvY"
-    },
-    {
       "userId": "2",
       "workspace": "Sala Nueva",
       "date": "2026-06-05",
@@ -144,14 +34,14 @@
       "id": "dv6lWT_Xt4Y"
     },
     {
-      "userId": "2",
+      "userId": "1",
       "workspace": "Sala Nueva",
       "date": "2026-06-05",
       "startHour": "09:00",
       "endHour": "10:00",
       "reason": "Reserva rápida",
       "status": "pending",
-      "id": "mjx6wRS5CvQ"
+      "id": "3K5TyVaCHBo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

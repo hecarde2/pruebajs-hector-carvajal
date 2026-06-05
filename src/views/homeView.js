@@ -15,12 +15,34 @@ export default function homeView() {
   setTimeout(() => {
     homeController();
 
+    const createReservationHandler = async () => {
+      const container = document.querySelector("#reservationsContainer");
+
+      const newRes = {
+        userId: user.id,
+        workspace: "Sala Nueva",
+        date: new Date().toISOString().slice(0, 10),
+        startHour: "09:00",
+        endHour: "10:00",
+        reason: "Reserva rápida",
+        status: "pending",
+      };
+
+      try {
+        const created = await createReservation(newRes);
+        container.insertAdjacentHTML("afterbegin", ReservationCard(created));
+      } catch (err) {
+        console.error(err);
+        container.insertAdjacentHTML("afterbegin", ReservationCard(newRes));
+      }
+    };
+
     document
       .querySelector("#manageReservationsBtn")
-      ?.addEventListener("click", (e) => {
+      ?.addEventListener("click", async (e) => {
         e?.preventDefault?.();
         console.log("manageReservationsBtn clicked", { user });
-        navigateTo("/reservations");
+        await createReservationHandler();
       });
 
     document
@@ -28,28 +50,7 @@ export default function homeView() {
       ?.addEventListener("click", async (e) => {
         e?.preventDefault?.();
         console.log("newReservationBtn clicked", { user });
-        const container = document.querySelector("#reservationsContainer");
-
-        const newRes = {
-          userId: user.id,
-          workspace: "Sala Nueva",
-          date: new Date().toISOString().slice(0, 10),
-          startHour: "09:00",
-          endHour: "10:00",
-          reason: "Reserva rápida",
-          status: "pending",
-        };
-
-        try {
-          console.log("creating reservation", newRes);
-          const created = await createReservation(newRes);
-          console.log("created reservation", created);
-          container.insertAdjacentHTML("afterbegin", ReservationCard(created));
-        } catch (err) {
-          console.error(err);
-          // Fallback: render locally if API fails
-          container.insertAdjacentHTML("afterbegin", ReservationCard(newRes));
-        }
+        await createReservationHandler();
       });
   });
 
